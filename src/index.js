@@ -20,3 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 characterBar.appendChild(span);
             });
         });
+
+      
+    function showCharacterDetails(character) {
+        currentCharacter = character; 
+        detailedInfo.innerHTML = `
+            <img src="${character.image}" alt="${character.name}">
+            <h2>${character.name}</h2>
+            <p>Votes: <span id="vote-count">${character.votes}</span></p>
+        `;
+    };
