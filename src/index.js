@@ -7,3 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const votesInput = document.querySelector("#votes");
     const resetButton = document.querySelector("#reset-btn");
     const addCharacterForm = document.querySelector("#character-form");
+    let currentCharacter = null; 
+
+   
+    fetch(baseURL)
+        .then(res => res.json())
+        .then(characters => {
+            characters.forEach(character => {
+                const span = document.createElement("span");
+                span.textContent = character.name;
+                span.addEventListener("click", () => showCharacterDetails(character));
+                characterBar.appendChild(span);
+            });
+        });
