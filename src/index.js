@@ -49,3 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify({ votes: newVoteCount })
         });
     });
+
+    resetButton.addEventListener("click", () => {
+        if (!currentCharacter) return;
+
+        document.querySelector("#vote-count").textContent = "0";
+        currentCharacter.votes = 0;
+
+        
+        fetch(`${baseURL}/${currentCharacter.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ votes: 0 })
+        });
+    });
