@@ -30,3 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Votes: <span id="vote-count">${character.votes}</span></p>
         `;
     };
+    votesForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!currentCharacter) return;
+
+        let addedVotes = parseInt(votesInput.value);
+        let newVoteCount = currentCharacter.votes + addedVotes;
+
+       
+        document.querySelector("#vote-count").textContent = newVoteCount;
+        currentCharacter.votes = newVoteCount;
+        votesInput.value = "";
+
+       
+        fetch(`${baseURL}/${currentCharacter.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ votes: newVoteCount })
+        });
+    });
