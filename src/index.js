@@ -63,3 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify({ votes: 0 })
         });
     });
+    addCharacterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let name = document.querySelector("#name").value;
+        let image = document.querySelector("#image").value;
+
+        let newCharacter = { name, image, votes: 0 };
