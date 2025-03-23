@@ -69,3 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let image = document.querySelector("#image").value;
 
         let newCharacter = { name, image, votes: 0 };
+        const span = document.createElement("span");
+        span.textContent = name;
+        span.addEventListener("click", () => showCharacterDetails(newCharacter));
+        characterBar.appendChild(span);
+
+        showCharacterDetails(newCharacter);
