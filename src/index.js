@@ -75,3 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
         characterBar.appendChild(span);
 
         showCharacterDetails(newCharacter);
+        fetch(baseURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newCharacter)
+        })
+        .then(res => res.json())
+        .then(data => newCharacter.id = data.id); // Assign ID from server
+    });
+});
